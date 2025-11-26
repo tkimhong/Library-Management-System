@@ -5,10 +5,18 @@ import services.*;
 import java.util.Scanner;
 
 public class MainMenu {
-
+    private UserService userService;
+    private BookService bookService;
+    private BorrowingService borrowingService;
+    private RulesEngine rulesEngine;
+    private Scanner scanner;
 
     public MainMenu() {
-
+        this.userService = new UserService();
+        this.bookService = new BookService();
+        this.borrowingService = new BorrowingService();
+        this.rulesEngine = new RulesEngine();
+        this.scanner = new Scanner(System.in);
     }
 
     // TODO (Tiangkimhong): Implement menu system

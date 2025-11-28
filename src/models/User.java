@@ -1,6 +1,5 @@
 package models;
 
-import java.util.ArrayList;
 
 public class User {
     // TODO (Mengkheang): Add these fields
@@ -47,6 +46,10 @@ public class User {
         this.email = email;
     }
 
+    public void setID(String ID) {
+        this.studentID = ID;
+    }
+
     public void setActive(boolean active) {
         this.isActive = active;
     }
@@ -60,37 +63,3 @@ public class User {
 }
 
 
-publlic class UserManger
-{
-
-    private ArrayList<User> users = new ArrayList<>();
-
-    public void addUser(String name, String studentID, String email) {
-        for (User u : users)
-
-        {
-            if (u.getStudentID().equals(studentID)) {
-                System.out.println("User already exists.");
-                return;
-
-            }
-        }
-
-        User newUser = new User(name, studentID, email);
-
-        users.add(newUser);
-        System.out.println("User added!");
-    }
-
-    public void viewUsers(){
-        if (users.isEMpty()){
-            System.out.println("No users found.");
-            return;
-        }
-
-        System.out,println("==== User List ====");
-        for (User u : users){
-            System.out.println(u);
-        }
-    }
-}

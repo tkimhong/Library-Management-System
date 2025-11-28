@@ -52,6 +52,10 @@ public class RulesEngine {
     }
 
     public void markOverdueRecords(ArrayList<BorrowRecord> records) {
-        // TODO: Update isOverdue flag for overdue records
+        for (BorrowRecord record : records) {
+            if (isOverdue(record)) {
+                record.setOverdue(true);
+            }
+        }
     }
 }

@@ -24,12 +24,10 @@ public class RulesEngine {
     }
 
     public boolean isBookAvailable(Book book) {
-        // TODO: Check if book has copies available
-        return false;
+        return book.getCopiesAvailable() > 0;
     }
 
     public LocalDate calculateDueDate(LocalDate borrowDate) {
-        // TODO: Add 14 days to borrow date
         return borrowDate.plusDays(BORROWING_PERIOD_DAYS);
     }
 

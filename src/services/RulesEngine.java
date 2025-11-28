@@ -11,12 +11,16 @@ public class RulesEngine {
     private static final int MAX_BOOKS_PER_USER = 3;
     private static final int BORROWING_PERIOD_DAYS = 14;
 
-    // TODO (Tiangkimhong): Implement these methods
-
     public boolean canUserBorrow(User user, ArrayList<BorrowRecord> userBorrows) {
-        // TODO: Check if user is active
-        // TODO: Check if user has less than 3 books
-        return false;
+        if (!user.isActive()){
+            return false;
+        }
+
+        if (userBorrows.size() >= MAX_BOOKS_PER_USER){
+            return false;
+        }
+
+        return true;
     }
 
     public boolean isBookAvailable(Book book) {

@@ -40,8 +40,15 @@ public class RulesEngine {
     }
 
     public ArrayList<BorrowRecord> getOverdueRecords(ArrayList<BorrowRecord> allRecords) {
-        // TODO: Filter and return only overdue records
-        return null;
+        ArrayList<BorrowRecord> overdueRecords = new ArrayList<>();
+
+        for (BorrowRecord record : allRecords) {
+            if (isOverdue(record)) {
+                overdueRecords.add(record);
+            }
+        }
+
+        return overdueRecords;
     }
 
     public void markOverdueRecords(ArrayList<BorrowRecord> records) {

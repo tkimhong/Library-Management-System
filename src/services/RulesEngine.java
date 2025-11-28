@@ -12,11 +12,11 @@ public class RulesEngine {
     private static final int BORROWING_PERIOD_DAYS = 14;
 
     public boolean canUserBorrow(User user, ArrayList<BorrowRecord> userBorrows) {
-        if (!user.isActive()){
+        if (!user.isActive()) {
             return false;
         }
 
-        if (userBorrows.size() >= MAX_BOOKS_PER_USER){
+        if (userBorrows.size() >= MAX_BOOKS_PER_USER) {
             return false;
         }
 
@@ -32,8 +32,11 @@ public class RulesEngine {
     }
 
     public boolean isOverdue(BorrowRecord record) {
-        // TODO: Check if current date is past due date and not returned
-        return false;
+        if (record.getReturnDate() != null) {
+            return false;
+        }
+
+        return LocalDate.now().isAfter(record.getDueDate());
     }
 
     public ArrayList<BorrowRecord> getOverdueRecords(ArrayList<BorrowRecord> allRecords) {

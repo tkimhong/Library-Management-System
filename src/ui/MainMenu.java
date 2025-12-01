@@ -1,7 +1,9 @@
 package ui;
 
 import services.*;
+import models.Book;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class MainMenu {
@@ -62,30 +64,30 @@ public class MainMenu {
 
         while (!back) {
             System.out.println("\n=== USER MANAGEMENT ===");
-            System.out.println("0. Add New User");
-            System.out.println("1. View User Details");
-            System.out.println("2. Edit User");
-            System.out.println("3. Deactivate User");
-            System.out.println("4. Back to Main Menu");
+            System.out.println("1. Add New User");
+            System.out.println("2. View User Details");
+            System.out.println("3. Edit User");
+            System.out.println("4. Deactivate User");
+            System.out.println("5. Back to Main Menu");
             System.out.print("Enter your choice: ");
 
             int choice = scanner.nextInt();
             scanner.nextLine();
 
             switch (choice) {
-                case 0:
+                case 1:
                     addNewUser();
                     break;
-                case 1:
+                case 2:
                     viewUserDetails();
                     break;
-                case 2:
+                case 3:
                     editUserInfo();
                     break;
-                case 3:
+                case 4:
                     deactivateUserAccount();
                     break;
-                case 4:
+                case 5:
                     back = true;
                     break;
                 default:
@@ -132,5 +134,46 @@ public class MainMenu {
         String studentID = scanner.nextLine();
 
         userService.deactivateUser(studentID);
+    }
+
+    private void bookManagementMenu() {
+        boolean back = false;
+
+        while (!back) {
+            System.out.println("\n=== BOOK MANAGEMENT ===");
+            System.out.println("1. Add New Book");
+            System.out.println("2. View All Books");
+            System.out.println("3. Update Book");
+            System.out.println("4. Remove Book");
+            System.out.println("5. Search Books");
+            System.out.println("6. Back to Main Menu");
+            System.out.print("Enter your choice: ");
+
+            int choice = scanner.nextInt();
+            scanner.nextLine();
+
+            switch (choice) {
+                case 1:
+                    addNewBook();
+                    break;
+                case 2:
+                    viewAllBooks();
+                    break;
+                case 3:
+                    updateBookInfo();
+                    break;
+                case 4:
+                    removeBookEntry();
+                    break;
+                case 5:
+                    searchBooksMenu();
+                    break;
+                case 6:
+                    back = true;
+                    break;
+                default:
+                    System.out.println("Invalid choice!");
+            }
+        }
     }
 }

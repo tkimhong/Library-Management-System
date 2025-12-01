@@ -209,4 +209,20 @@ public class MainMenu {
             }
         }
     }
+
+    private void updateBookInfo() {
+        System.out.print("Enter ISBN of book to update: ");
+        String ISBN = scanner.nextLine();
+
+        System.out.print("Enter new title (leave blank to skip): ");
+        String newTitle = scanner.nextLine();
+
+        System.out.print("Enter new author (leave blank to skip): ");
+        String newAuthor = scanner.nextLine();
+
+        System.out.print("Enter new genre (leave blank to skip): ");
+        String newGenre = scanner.nextLine();
+
+        bookService.updateBook(ISBN, newTitle, newAuthor, newGenre);
+    }
 }

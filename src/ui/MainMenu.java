@@ -176,4 +176,24 @@ public class MainMenu {
             }
         }
     }
+
+    private void addNewBook() {
+        System.out.print("Enter title: ");
+        String title = scanner.nextLine();
+
+        System.out.print("Enter author: ");
+        String author = scanner.nextLine();
+
+        System.out.print("Enter genre: ");
+        String genre = scanner.nextLine();
+
+        System.out.print("Enter ISBN: ");
+        String ISBN = scanner.nextLine();
+
+        System.out.print("Enter number of copies: ");
+        int copies = scanner.nextInt();
+        scanner.nextLine(); // consume new line after that int
+
+        bookService.addBook(title, author, genre, ISBN, copies);
+    }
 }

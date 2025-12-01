@@ -232,4 +232,50 @@ public class MainMenu {
 
         bookService.removeBook(ISBN);
     }
+
+    private void searchBooksMenu() {
+        System.out.println("\n=== SEARCH BOOKS ===");
+        System.out.println("1. Search by Title");
+        System.out.println("2. Search by Author");
+        System.out.println("3. Search by Genre");
+        System.out.println("4. Search by ISBN");
+        System.out.print("Enter your choice: ");
+
+        int choice = scanner.nextInt();
+        scanner.nextLine();
+
+        switch (choice) {
+            case 1:
+                System.out.print("Enter title: ");
+                String title = scanner.nextLine();
+                ArrayList<Book> titleResults = bookService.searchByTitle(title);
+                displaySearchResults(titleResults);
+                break;
+            case 2:
+                System.out.print("Enter author: ");
+                String author = scanner.nextLine();
+                ArrayList<Book> authorResults =
+                        bookService.searchByAuthor(author);
+                displaySearchResults(authorResults);
+                break;
+            case 3:
+                System.out.print("Enter genre: ");
+                String genre = scanner.nextLine();
+                ArrayList<Book> genreResults = bookService.searchByGenre(genre);
+                displaySearchResults(genreResults);
+                break;
+            case 4:
+                System.out.print("Enter ISBN: ");
+                String ISBN = scanner.nextLine();
+                Book book = bookService.searchByISBN(ISBN);
+                if (book != null) {
+                    System.out.println(book);
+                } else {
+                    System.out.println("Book not found.");
+                }
+                break;
+            default:
+                System.out.println("Invalid choice!");
+        }
+    }
 }

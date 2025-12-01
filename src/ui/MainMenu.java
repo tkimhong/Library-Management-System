@@ -278,4 +278,15 @@ public class MainMenu {
                 System.out.println("Invalid choice!");
         }
     }
+
+    private void displaySearchResults(ArrayList<Book> results) {
+        if (results == null || results.isEmpty()) {
+            System.out.println("No books found.");
+        } else {
+            System.out.println("\n=== SEARCH RESULTS ===");
+            for (Book book : results) {
+                System.out.println(book);
+            }
+        }
+    }
 }

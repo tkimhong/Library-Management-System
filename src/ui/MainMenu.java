@@ -20,12 +20,6 @@ public class MainMenu {
     }
 
     public void start() {
-        // 1. User Management
-        // 2. Book Management
-        // 3. Borrowing System
-        // 4. View Overdue Books
-        // 5. Exit
-
         boolean running = true;
 
         while (running) {
@@ -98,5 +92,18 @@ public class MainMenu {
                     System.out.println("Invalid choice!");
             }
         }
+    }
+
+    private void addNewUser() {
+        System.out.print("Enter name: ");
+        String name = scanner.nextLine();
+
+        System.out.print("Enter student ID: ");
+        String studentID = scanner.nextLine();
+
+        System.out.print("Enter email: ");
+        String email = scanner.nextLine();
+
+        userService.addUser(name, studentID, email);
     }
 }

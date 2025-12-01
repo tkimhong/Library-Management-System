@@ -323,4 +323,19 @@ public class MainMenu {
             }
         }
     }
+
+    private void borrowBookProcess() {
+        System.out.print("Enter student ID: ");
+        String studentID = scanner.nextLine();
+
+        System.out.print("Enter book ISBN: ");
+        String ISBN = scanner.nextLine();
+
+        // TODO: Need to get User and Book objects from services
+        // This will work once Book.java and BorrowRecord.java are complete
+        // For now though the structure is ready
+
+        System.out.println("Borrow will be functional once Book and BorrowRecord models are complete.");
+        System.out.println("Dididi, dididi, dididididi");
+    }
 }

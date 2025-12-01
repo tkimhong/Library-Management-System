@@ -106,4 +106,11 @@ public class MainMenu {
 
         userService.addUser(name, studentID, email);
     }
+
+    private void viewUserDetails() {
+        System.out.print("Enter student ID: ");
+        String studentID = scanner.nextLine();
+
+        userService.viewUser(studentID);
+    }
 }

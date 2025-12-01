@@ -366,4 +366,26 @@ public class MainMenu {
             }
         }
     }
+
+    private void viewOverdueBooks() {
+        ArrayList<BorrowRecord> allBorrows = borrowingService.getActiveBorrows();
+
+        if (allBorrows == null || allBorrows.isEmpty()) {
+            System.out.println("No active borrows to check.");
+            return;
+        }
+
+        ArrayList<BorrowRecord> overdueRecords = rulesEngine.getOverdueRecords(allBorrows);
+
+        rulesEngine.markOverdueRecords(overdueRecords);
+
+        if (overdueRecords.isEmpty()) {
+            System.out.println("No overdue books. All good!");
+        } else {
+            System.out.println("\n=== OVERDUE BOOKS ===");
+            for (BorrowRecord record : overdueRecords) {
+                System.out.println(record);
+            }
+        }
+    }
 }

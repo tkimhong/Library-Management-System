@@ -353,4 +353,17 @@ public class MainMenu {
         System.out.println("Return will be functional once Book and BorrowRecord models are complete.");
         System.out.println("Dididi, dididi, dididididi");
     }
+
+    private void viewActiveBorrows() {
+        ArrayList<BorrowRecord> activeBorrows = borrowingService.getActiveBorrows();
+
+        if (activeBorrows == null || activeBorrows.isEmpty()) {
+            System.out.println("No active borrows.");
+        } else {
+            System.out.println("\n=== ACTIVE BORROWS ===");
+            for (BorrowRecord record : activeBorrows) {
+                System.out.println(record);
+            }
+        }
+    }
 }

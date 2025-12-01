@@ -196,4 +196,17 @@ public class MainMenu {
 
         bookService.addBook(title, author, genre, ISBN, copies);
     }
+
+    private void viewAllBooks() {
+        ArrayList<Book> books = bookService.viewAllBooks();
+
+        if (books.isEmpty()) {
+            System.out.println("No books in the library.");
+        } else {
+            System.out.println("\n=== ALL BOOKS ===");
+            for (Book book : books) {
+                System.out.println(book);
+            }
+        }
+    }
 }

@@ -113,4 +113,17 @@ public class MainMenu {
 
         userService.viewUser(studentID);
     }
+
+    private void editUserInfo() {
+        System.out.print("Enter student ID: ");
+        String studentID = scanner.nextLine();
+
+        System.out.print("Enter new name (leave blank to skip): ");
+        String newName = scanner.nextLine();
+
+        System.out.print("Enter new email (leave blank to skip): ");
+        String newEmail = scanner.nextLine();
+
+        userService.editUser(studentID, newName, newEmail);
+    }
 }

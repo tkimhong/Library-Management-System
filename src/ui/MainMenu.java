@@ -2,6 +2,7 @@ package ui;
 
 import services.*;
 import models.Book;
+import models.BorrowRecord;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -286,6 +287,39 @@ public class MainMenu {
             System.out.println("\n=== SEARCH RESULTS ===");
             for (Book book : results) {
                 System.out.println(book);
+            }
+        }
+    }
+
+    private void borrowingMenu() {
+        boolean back = false;
+
+        while (!back) {
+            System.out.println("\n=== BORROWING SYSTEM ===");
+            System.out.println("1. Borrow a Book");
+            System.out.println("2. Return a Book");
+            System.out.println("3. View Active Borrows");
+            System.out.println("4. Back to Main Menu");
+            System.out.print("Enter your choice: ");
+
+            int choice = scanner.nextInt();
+            scanner.nextLine();
+
+            switch (choice) {
+                case 1:
+                    borrowBookProcess();
+                    break;
+                case 2:
+                    returnBookProcess();
+                    break;
+                case 3:
+                    viewActiveBorrows();
+                    break;
+                case 4:
+                    back = true;
+                    break;
+                default:
+                    System.out.println("Invalid choice!");
             }
         }
     }

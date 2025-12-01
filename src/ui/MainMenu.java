@@ -225,4 +225,11 @@ public class MainMenu {
 
         bookService.updateBook(ISBN, newTitle, newAuthor, newGenre);
     }
+
+    private void removeBookEntry() {
+        System.out.print("Enter ISBN of book to remove: ");
+        String ISBN = scanner.nextLine();
+
+        bookService.removeBook(ISBN);
+    }
 }

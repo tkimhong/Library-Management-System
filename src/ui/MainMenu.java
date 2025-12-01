@@ -126,4 +126,11 @@ public class MainMenu {
 
         userService.editUser(studentID, newName, newEmail);
     }
+
+    private void deactivateUserAccount() {
+        System.out.print("Enter student ID to deactivate: ");
+        String studentID = scanner.nextLine();
+
+        userService.deactivateUser(studentID);
+    }
 }

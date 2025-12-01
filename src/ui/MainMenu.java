@@ -19,10 +19,7 @@ public class MainMenu {
         this.scanner = new Scanner(System.in);
     }
 
-    // TODO (Tiangkimhong): Implement menu system
-
     public void start() {
-        // TODO: Display main menu and handle user choices
         // 1. User Management
         // 2. Book Management
         // 3. Borrowing System
@@ -31,7 +28,7 @@ public class MainMenu {
 
         boolean running = true;
 
-        while (running){
+        while (running) {
             System.out.println("\n=== LIBRARY MANAGEMENT SYSTEM ===");
             System.out.println("1. User Management");
             System.out.println("2. Book Management");
@@ -43,7 +40,7 @@ public class MainMenu {
             int choice = scanner.nextInt();
             scanner.nextLine(); // to have an empty space
 
-            switch (choice){
+            switch (choice) {
                 case 1:
                     userManagementMenu();
                     break;
@@ -64,6 +61,42 @@ public class MainMenu {
                     System.out.println("Invalid choice, try again!");
             }
         }
+    }
 
+    private void userManagementMenu() {
+        boolean back = false;
+
+        while (!back) {
+            System.out.println("\n=== USER MANAGEMENT ===");
+            System.out.println("0. Add New User");
+            System.out.println("1. View User Details");
+            System.out.println("2. Edit User");
+            System.out.println("3. Deactivate User");
+            System.out.println("4. Back to Main Menu");
+            System.out.print("Enter your choice: ");
+
+            int choice = scanner.nextInt();
+            scanner.nextLine();
+
+            switch (choice) {
+                case 0:
+                    addNewUser();
+                    break;
+                case 1:
+                    viewUserDetails();
+                    break;
+                case 2:
+                    editUserInfo();
+                    break;
+                case 3:
+                    deactivateUserAccount();
+                    break;
+                case 4:
+                    back = true;
+                    break;
+                default:
+                    System.out.println("Invalid choice!");
+            }
+        }
     }
 }

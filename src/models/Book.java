@@ -1,13 +1,12 @@
 package models;
 
 public class Book {
-    // TODO (Morngdyza): Add these fields
-    // - String title
-    // - String author
-    // - String genre
-    // - String ISBN
-    // - int copiesAvailable
-    // - int totalCopies
+    private String title;
+    private String author;
+    private String genre;
+    private String ISBN;
+    private int copiesAvailable;
+    private int totalCopies;
 
     // TODO: Add constructor
 

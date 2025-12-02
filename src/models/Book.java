@@ -77,5 +77,11 @@ public class Book {
         }
     }
 
+    @Override
+    public String toString() {
+        return "Book{" + "title'" + title + '\'' + ", author='" + author + '\'' + ", genre='" + genre + '\'' + ", ISBN='" + ISBN + '\'' + ", copiesAvailable=" + copiesAvailable + ", totalCopies=" + totalCopies +
+                +'}';
+    }
+
     // TODO: Add toString() method for displaying book info
 }

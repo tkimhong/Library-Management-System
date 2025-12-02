@@ -18,6 +18,29 @@ public class Book {
     }
 
     // TODO: Add getters and setters
+    public String getTitle() {
+        return title;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public String getGenre() {
+        return genre;
+    }
+
+    public String getISBN() {
+        return ISBN;
+    }
+
+    public int getCopiesAvailable() {
+        return copiesAvailable;
+    }
+
+    public int getTotalCopies() {
+        return totalCopies;
+    }
 
     // TODO: Add toString() method for displaying book info
 }

@@ -11,10 +11,10 @@ public class BookService {
         this.books = new ArrayList<>();
     }
 
-    // TODO (Morngdyza): Implement these methods
-
     public void addBook(String title, String author, String genre, String ISBN, int copies) {
-        // TODO: Create new book and add to list
+        Book newBook = new Book(title, author, genre, ISBN, copies);
+        books.add(newBook);
+        System.out.println("Book added successfully: " + title);
     }
 
     public ArrayList<Book> viewAllBooks() {
@@ -30,6 +30,7 @@ public class BookService {
     }
 
     // Search methods
+    // TODO (Morngdyza): Implement these methods
     public ArrayList<Book> searchByTitle(String title) {
         // TODO: Search books by title
         return null;

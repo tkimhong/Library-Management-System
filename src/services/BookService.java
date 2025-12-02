@@ -34,7 +34,13 @@ public class BookService {
     }
 
     public void removeBook(String ISBN) {
-        // TODO: Find and remove book from list
+        Book book = searchByISBN(ISBN);
+        if (book != null) {
+            books.remove(book);
+            System.out.println("Book removed successfully!");
+        } else {
+            System.out.println("Book not found with ISBN: " + ISBN);
+        }
     }
 
     // Search methods

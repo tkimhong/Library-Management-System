@@ -61,5 +61,21 @@ public class Book {
         this.totalCopies = totalCopies;
     }
 
+    public boolean isAvailable() {
+        return copiesAvailable > 0;
+    }
+
+    public void borrowCopy() {
+        if (copiesAvailable > 0) {
+            copiesAvailable--;
+        }
+    }
+
+    public void returnCopy() {
+        if (copiesAvailable < totalCopies) {
+            copiesAvailable++;
+        }
+    }
+
     // TODO: Add toString() method for displaying book info
 }

@@ -17,7 +17,6 @@ public class Book {
         this.copiesAvailable = totalCopies;   // Initially all copies are available
     }
 
-    // TODO: Add getters and setters
     public String getTitle() {
         return title;
     }
@@ -40,6 +39,26 @@ public class Book {
 
     public int getTotalCopies() {
         return totalCopies;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public void setGenre(String genre) {
+        this.genre = genre;
+    }
+
+    public void setCopiesAvailable(int copiesAvailable) {
+        this.copiesAvailable = copiesAvailable;
+    }
+
+    public void setTotalCopies(int totalCopies) {
+        this.totalCopies = totalCopies;
     }
 
     // TODO: Add toString() method for displaying book info

@@ -8,7 +8,14 @@ public class Book {
     private int copiesAvailable;
     private int totalCopies;
 
-    // TODO: Add constructor
+    public Book(String title, String author, String genre, String ISBN, int totalCopies) {
+        this.title = title;
+        this.author = author;
+        this.genre = genre;
+        this.ISBN = ISBN;
+        this.totalCopies = totalCopies;
+        this.copiesAvailable = totalCopies;   // Initially all copies are available
+    }
 
     // TODO: Add getters and setters
 

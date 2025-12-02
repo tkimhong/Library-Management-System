@@ -45,23 +45,33 @@ public class BookService {
 
     // Search methods
     // TODO (Morngdyza): Implement these methods
+    // NOTE: searchByISBN is implemented below for CRUD ops
+    // The other 3 search methods need implementation
+
     public ArrayList<Book> searchByTitle(String title) {
         // TODO: Search books by title
-        return null;
+        // Hint: Loop through books then check if title contains search term (case-insensitive)
+        return new ArrayList<>();
     }
 
     public ArrayList<Book> searchByAuthor(String author) {
         // TODO: Search books by author
-        return null;
+        // Hint: Loop through books then check if author contains search term (case-insensitive)
+        return new ArrayList<>();
     }
 
     public ArrayList<Book> searchByGenre(String genre) {
         // TODO: Search books by genre
-        return null;
+        // Hint: Loop through books then check if genre matches (case-insensitive)
+        return new ArrayList<>();
     }
 
     public Book searchByISBN(String ISBN) {
-        // TODO: Search book by ISBN (unique)
+        for (Book book : books) {
+            if (book.getISBN().equals(ISBN)) {
+                return book;
+            }
+        }
         return null;
     }
 }

@@ -22,7 +22,15 @@ public class BookService {
     }
 
     public void updateBook(String ISBN, String newTitle, String newAuthor, String newGenre) {
-        // TODO: Find book and update details
+        Book book = searchByISBN(ISBN);
+        if (book != null) {
+            book.setTitle(newTitle);
+            book.setAuthor(newAuthor);
+            book.setGenre(newGenre);
+            System.out.println("Book updated successfully!");
+        } else {
+            System.out.println("Book not found with ISBN: " + ISBN);
+        }
     }
 
     public void removeBook(String ISBN) {

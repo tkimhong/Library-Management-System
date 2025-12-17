@@ -53,4 +53,19 @@ public class BorrowRecord {
     public void setOverdue(boolean overdue) {
         this.isOverdue = overdue;
     }
+
+    @Override
+    public String toString() {
+        String status = (returnDate != null) ? "Returned on " + returnDate :
+                "Active";
+        String overdueStatus = isOverdue() ? " [OVERDUE]" : "";
+
+        return "BorrowRecord{" +
+                "user=" + user.getName() + " (" + user.getStudentID() + ")" +
+                ", book=" + book.getTitle() + " by " + book.getAuthor() +
+                ", borrowDate=" + borrowDate +
+                ", dueDate=" + dueDate +
+                ", status=" + status + overdueStatus +
+                '}';
+    }
 }

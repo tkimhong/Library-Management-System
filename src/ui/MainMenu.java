@@ -1,5 +1,6 @@
 package ui;
 
+import models.User;
 import services.*;
 import models.Book;
 import models.BorrowRecord;
@@ -14,9 +15,9 @@ public class MainMenu {
     private RulesEngine rulesEngine;
     private Scanner scanner;
 
-    public MainMenu() {
-        this.userService = new UserService();
-        this.bookService = new BookService();
+    public MainMenu(BookService bookService, UserService userService) {
+        this.userService = userService;
+        this.bookService = bookService;
         this.borrowingService = new BorrowingService();
         this.rulesEngine = new RulesEngine();
         this.scanner = new Scanner(System.in);
@@ -331,12 +332,34 @@ public class MainMenu {
         System.out.print("Enter book ISBN: ");
         String ISBN = scanner.nextLine();
 
-        // TODO: Need to get User and Book objects from services
-        // This will work once Book.java and BorrowRecord.java are complete
-        // For now though the structure is ready
+        // System.out.println("Borrow will be functional once Book and BorrowRecord models are complete.");
+        // System.out.println("Dididi, dididi, dididididi");
 
-        System.out.println("Borrow will be functional once Book and BorrowRecord models are complete.");
-        System.out.println("Dididi, dididi, dididididi");
+        // Get the actual objs
+        User user = userService.getUserByStudentID(studentID);
+        Book book = bookService.searchByISBN(ISBN);
+
+        if (user == null) {
+            System.out.println("User not found!");
+            return;
+        }
+
+        if (book == null) {
+            System.out.println("Book not found!");
+            return;
+        }
+
+        // Get user's current borrows and validate
+        ArrayList<BorrowRecord> userBorrows = borrowingService.getUserBorrows(user);
+        if (rulesEngine.canUserBorrow(user, userBorrows)) {
+            if (borrowingService.borrowBook(user, book)) {
+                System.out.println("Book borrowed successfully!");
+            } else {
+                System.out.println("Failed to borrow book (no copies available).");
+            }
+        } else {
+            System.out.println("User cannot borrow (inactive or has 3 books already).");
+        }
     }
 
     private void returnBookProcess() {
@@ -346,12 +369,22 @@ public class MainMenu {
         System.out.print("Enter book ISBN: ");
         String ISBN = scanner.nextLine();
 
-        // TODO: Need to get User and Book objects from services
-        // This will work once Book.java and BorrowRecord.java are complete
-        // For now though the structure is ready
+        // System.out.println("Return will be functional once Book and BorrowRecord models are complete.");
+        // System.out.println("Dididi, dididi, dididididi");
 
-        System.out.println("Return will be functional once Book and BorrowRecord models are complete.");
-        System.out.println("Dididi, dididi, dididididi");
+        User user = userService.getUserByStudentID(studentID);
+        Book book = bookService.searchByISBN(ISBN);
+
+        if (user == null || book == null) {
+            System.out.println("User or Book not found!");
+            return;
+        }
+
+        if (borrowingService.returnBook(user, book)) {
+            System.out.println("Book returned successfully!");
+        } else {
+            System.out.println("No active borrow record found for this user and book.");
+        }
     }
 
     private void viewActiveBorrows() {

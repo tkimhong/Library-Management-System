@@ -77,4 +77,13 @@ public class UserService
             System.out.println("User not found.");
         }
     }
+
+    public User getUserByStudentID(String studentID) {
+        for (User u : users) {
+            if (u.getStudentID().equals(studentID)) {
+                return u;
+            }
+        }
+        return null;
+    }
 }

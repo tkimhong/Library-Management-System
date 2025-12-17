@@ -3,7 +3,7 @@ package services;
 import models.User;
 import models.Book;
 import models.BorrowRecord;
-
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class BorrowingService {
@@ -13,29 +13,62 @@ public class BorrowingService {
         this.borrowRecords = new ArrayList<>();
     }
 
-    // TODO (Kimhor): Implement these methods
-
     public boolean borrowBook(User user, Book book) {
-        // TODO: Create new borrow record
-        // TODO: Decrease book's copiesAvailable
-        // TODO: Set due date to 14 days from now
-        return false;
+        // Validation: Check if book is available
+        if (book.getCopiesAvailable() <= 0) {
+            return false;
+        }
+
+        // Create new borrow record and set due date to 14 days from now
+        LocalDate today = LocalDate.now();
+        LocalDate due = today.plusDays(14);
+        BorrowRecord newRecord = new BorrowRecord(user, book, today, due);
+
+        // Decrease book's copiesAvailable
+        book.setCopiesAvailable(book.getCopiesAvailable() - 1);
+
+        borrowRecords.add(newRecord);
+        return true;
     }
 
     public boolean returnBook(User user, Book book) {
-        // TODO: Find the borrow record
-        // TODO: Set return date to today
-        // TODO: Increase book's copiesAvailable
+        for (BorrowRecord record : borrowRecords) {
+            // Find the active record (matching user and book, not yet returned)
+            if (record.getUser().equals(user) &&
+                    record.getBook().equals(book) &&
+                    record.getReturnDate() == null) {
+
+                // Set return date to today
+                record.setReturnDate(LocalDate.now());
+
+                // Increase book's copiesAvailable
+                book.setCopiesAvailable(book.getCopiesAvailable() + 1);
+
+                return true;
+            }
+        }
         return false;
     }
 
     public ArrayList<BorrowRecord> getActiveBorrows() {
-        // TODO: Return all records where returnDate is null
-        return null;
+        ArrayList<BorrowRecord> active = new ArrayList<>();
+        for (BorrowRecord record : borrowRecords) {
+            // Active means returnDate is null
+            if (record.getReturnDate() == null) {
+                active.add(record);
+            }
+        }
+        return active;
     }
 
     public ArrayList<BorrowRecord> getUserBorrows(User user) {
-        // TODO: Return all active borrows for specific user
-        return null;
+        ArrayList<BorrowRecord> userActive = new ArrayList<>();
+        for (BorrowRecord record : borrowRecords) {
+            // Return all active borrows for a specific user
+            if (record.getUser().equals(user) && record.getReturnDate() == null) {
+                userActive.add(record);
+            }
+        }
+        return userActive;
     }
 }

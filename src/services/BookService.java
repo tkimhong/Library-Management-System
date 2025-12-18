@@ -44,7 +44,6 @@ public class BookService {
     }
 
     // Search methods
-
     public ArrayList<Book> searchByTitle(String title) {
         ArrayList<Book> results = new ArrayList<>();
         for (Book book : books) {
@@ -56,9 +55,13 @@ public class BookService {
     }
 
     public ArrayList<Book> searchByAuthor(String author) {
-        // TODO: Search books by author
-        // Hint: Loop through books then check if author contains search term (case-insensitive)
-        return new ArrayList<>();
+        ArrayList<Book> results = new ArrayList<>();
+        for (Book book : books) {
+            if (book.getAuthor().toLowerCase().contains(author.toLowerCase())) {
+                results.add(book);
+            }
+        }
+        return results;
     }
 
     public ArrayList<Book> searchByGenre(String genre) {

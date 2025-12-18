@@ -44,14 +44,15 @@ public class BookService {
     }
 
     // Search methods
-    // TODO (Morngdyza): Implement these methods
-    // NOTE: searchByISBN is implemented below for CRUD ops
-    // The other 3 search methods need implementation
 
     public ArrayList<Book> searchByTitle(String title) {
-        // TODO: Search books by title
-        // Hint: Loop through books then check if title contains search term (case-insensitive)
-        return new ArrayList<>();
+        ArrayList<Book> results = new ArrayList<>();
+        for (Book book : books) {
+            if (book.getTitle().toLowerCase().contains(title.toLowerCase())) {
+                results.add(book);
+            }
+        }
+        return results;
     }
 
     public ArrayList<Book> searchByAuthor(String author) {

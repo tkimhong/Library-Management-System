@@ -65,9 +65,13 @@ public class BookService {
     }
 
     public ArrayList<Book> searchByGenre(String genre) {
-        // TODO: Search books by genre
-        // Hint: Loop through books then check if genre matches (case-insensitive)
-        return new ArrayList<>();
+        ArrayList<Book> results = new ArrayList<>();
+        for (Book book : books) {
+            if (book.getGenre().equalsIgnoreCase(genre)) {
+                results.add(book);
+            }
+        }
+        return results;
     }
 
     public Book searchByISBN(String ISBN) {

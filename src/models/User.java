@@ -13,7 +13,7 @@ public class User {
         this.email = email;
         this.isActive = true;
     }
-    
+
     public String getName() {
         return name;
     }
